@@ -6,7 +6,7 @@
   <title>SaborMexicano - Gastronomía Mexicana</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* ESTILOS DEL MENÚ HAMBURGUESA */
+    /* ESTILOS DEL MENÚ HAMBURGUESA CORREGIDOS */
     .hamburger-wrapper {
       position: relative;
       display: inline-block;
@@ -19,15 +19,23 @@
     .hamburger-button {
       display: flex;
       flex-direction: column;
-      width: 30px;
-      height: 30px;
+      width: 35px;
+      height: 35px;
       background: transparent;
       border: none;
       cursor: pointer;
-      padding: 0;
+      padding: 5px;
       gap: 4px;
       justify-content: center;
       align-items: center;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+      z-index: 1001;
+      position: relative;
+    }
+    
+    .hamburger-button:hover {
+      background-color: rgba(255, 255, 255, 0.1);
     }
     
     .hamburger-button span {
@@ -39,20 +47,22 @@
       transition: all 0.3s ease;
     }
     
+    /* Menú móvil - POSICIÓN CORREGIDA */
     .mobile-nav {
       position: fixed;
       top: 0;
-      right: -300px;
+      right: -100%;
       width: 280px;
       height: 100vh;
       background: #e63946;
       padding: 80px 20px 20px;
       z-index: 1000;
-      transition: right 0.3s ease;
-      box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+      transition: right 0.3s ease-in-out;
       overflow-y: auto;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
     }
     
+    /* SELECTOR CORREGIDO */
     #menu-toggle:checked ~ .mobile-nav {
       right: 0;
     }
@@ -123,6 +133,7 @@
       justify-content: center;
       border-radius: 50%;
       transition: background 0.3s ease;
+      z-index: 1002;
     }
     
     .close-menu:hover {
@@ -142,7 +153,6 @@
       transform: rotate(-45deg) translate(6px, -6px);
     }
 
-    /* Iconos para los enlaces (opcional) */
     .mobile-nav a::before {
       content: "•";
       margin-right: 10px;
@@ -150,7 +160,7 @@
       font-size: 18px;
     }
 
-    /* ===== BARRA DE BÚSQUEDA CON FILTRADO EN TIEMPO REAL ===== */
+    /* BARRA DE BÚSQUEDA */
     .search-wrapper {
       position: relative;
       flex: 1;
@@ -194,7 +204,6 @@
       color: #e63946;
     }
 
-    /* SUGERENCIAS DE BÚSQUEDA */
     .search-suggestions {
       position: absolute;
       top: 100%;
@@ -230,8 +239,7 @@
       cursor: pointer;
     }
 
-    .suggestion-item:hover,
-    .suggestion-item:focus {
+    .suggestion-item:hover {
       background: #f8f9fa;
       color: #e63946;
     }
@@ -256,7 +264,6 @@
       font-style: italic;
     }
 
-    /* Grupos de sugerencias */
     .suggestion-group {
       border-bottom: 1px solid #e0e0e0;
     }
@@ -274,7 +281,7 @@
       text-transform: uppercase;
     }
 
-    /* Responsive para búsqueda */
+    /* RESPONSIVE CORREGIDO */
     @media (max-width: 768px) {
       .search-wrapper {
         max-width: none;
@@ -286,6 +293,98 @@
         left: 20px;
         right: 20px;
         top: 120px;
+      }
+      
+      .mobile-nav {
+        width: 100%;
+        right: -100%;
+      }
+      
+      #menu-toggle:checked ~ .mobile-nav {
+        right: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .mobile-nav {
+        width: 100%;
+      }
+    }
+
+    /* ESTILOS EXISTENTES DE LA PÁGINA */
+    .intro {
+      display: flex;
+      padding: 40px;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .intro-texto {
+      flex: 1;
+    }
+
+    .intro-texto h1 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .intro-texto img {
+      max-width: 250px;
+    }
+
+    .intro-imagen {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .intro-imagen img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 10px;
+    }
+
+    .secciones {
+      display: flex;
+      justify-content: space-around;
+      padding: 40px;
+      background: #f8f9fa;
+    }
+
+    .card {
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #e63946;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-weight: bold;
+      color: #333;
+    }
+
+    /* Responsive para el contenido principal */
+    @media (max-width: 768px) {
+      .intro {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+      }
+
+      .secciones {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        padding: 20px;
       }
     }
   </style>
@@ -322,16 +421,13 @@
           <div class="search-icon" id="search-button">🔍</div>
           <span id="search-help" class="visually-hidden">Escriba para ver sugerencias de búsqueda</span>
           
-          <!-- SUGERENCIAS DE BÚSQUEDA-->
-          <div class="search-suggestions" id="search-suggestions">
-  
-          </div>
+          <div class="search-suggestions" id="search-suggestions"></div>
         </div>
       </div>
 
       <span><a href="index-en.html" aria-label="English version">ENG</a></span>
       
-      <!-- MENÚ HAMBURGUESA -->
+      <!-- MENÚ HAMBURGUESA - ESTRUCTURA CORREGIDA -->
       <div class="hamburger-wrapper">
         <input type="checkbox" id="menu-toggle">
         <label for="menu-toggle" class="hamburger-button">
@@ -340,20 +436,22 @@
           <span></span>
         </label>
         
+        <!-- MENÚ AL MISMO NIVEL QUE EL CHECKBOX -->
+        <div class="mobile-nav" aria-label="Navegación móvil">
+          <label for="menu-toggle" class="close-menu" aria-label="Cerrar menú">×</label>
+          <nav>
+            <ul>
+              <li><a href="historia.html">Historia</a></li>
+              <li><a href="platillos.html">Platillos</a></li>
+              <li><a href="recetas.html">Recetas</a></li>
+              <li><a href="festivales.html">Festivales</a></li>
+              <li><a href="soporte.html">Soporte</a></li>
+            </ul>
+          </nav>
+        </div>
+        
         <!-- Overlay para cerrar -->
         <label for="menu-toggle" class="menu-overlay"></label>
-        
-        <!-- Menú móvil -->
-        <nav class="mobile-nav" aria-label="Navegación móvil">
-          <label for="menu-toggle" class="close-menu" aria-label="Cerrar menú">×</label>
-          <ul>
-            <li><a href="historia.html">Historia</a></li>
-            <li><a href="platillos.html">Platillos</a></li>
-            <li><a href="recetas.html">Recetas</a></li>
-            <li><a href="festivales.html">Festivales</a></li>
-            <li><a href="soporte.html">Soporte</a></li>
-          </ul>
-        </nav>
       </div>
     </div>
   </header>
@@ -433,13 +531,11 @@
       const searchTerm = searchInput.value.trim();
       
       if (!searchTerm) {
-        // Si no hay término de búsqueda, mostrar todas las sugerencias
         showAllSuggestions();
         searchSuggestions.classList.add('active');
         return;
       }
 
-      // Buscar el primer resultado que coincida
       const results = searchData.filter(item => {
         const nameMatch = item.name.toLowerCase().includes(searchTerm.toLowerCase());
         const keywordMatch = item.keywords.some(keyword => 
@@ -449,10 +545,8 @@
       });
 
       if (results.length > 0) {
-        // Ir al primer resultado
         window.location.href = results[0].url;
       } else {
-        // Si no hay resultados, mostrar sugerencias filtradas
         filterSuggestions(searchTerm);
         searchSuggestions.classList.add('active');
       }
@@ -488,7 +582,6 @@
 
       let html = '';
       
-      // Mostrar solo algunas categorías por defecto
       const defaultCategories = ['Platillos', 'Recetas', 'Festivales'];
       
       defaultCategories.forEach(category => {
