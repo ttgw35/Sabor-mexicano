@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dishes - SaborMexicano</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/stylehead.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header role="banner">
+    <div class="logo">
+      <a href="index-en.html" aria-label="SaborMexicano - Home page">
+        <img src="../img/Aguacate logo.png" alt="SaborMexicano Logo">
+      </a>
+    </div>
+
+    <nav role="navigation" aria-label="Main navigation">
+      <ul>
+        <li><a href="/eng/history-en.html">History</a></li>
+        <li><a href="/eng/dishes-en.html">Dishes</a></li>
+        <li><a href="/eng/recipes-en.html">Recipes</a></li>
+        <li><a href="/eng/festivals-en.html">Festivals</a></li>
+      </ul>
+    </nav>
+
+    <div class="extra">
+      <a href="/eng/support-en.html" class="btn-support">Support</a>
+
+      <!-- SEARCH BAR -->
+      <div class="search-wrapper">
+        <div class="search-container">
+          <label for="search-input" class="visually-hidden">Search the site</label>
+          <input type="text" id="search-input" placeholder="Search dishes, recipes..." 
+                 aria-describedby="search-help">
+          <div class="search-icon" id="search-button">🔍</div>
+          <span id="search-help" class="visually-hidden">Type to see search suggestions</span>
+          
+          <div class="search-suggestions" id="search-suggestions">
+            <!-- Suggestions generated dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <span><a href="../platillos.html" class="btn-language" data-lang="ENG" aria-label="Spanish version">ESP</a></span>
+      <!-- HAMBURGER MENU -->
+      <div class="hamburger-wrapper">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger-button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        
+        <label for="menu-toggle" class="menu-overlay"></label>
+        
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+          <label for="menu-toggle" class="close-menu" aria-label="Close menu">×</label>
+           <ul>
+        <li><a href="/eng/history-en.html">History</a></li>
+        <li><a href="/eng/dishes-en.html">Dishes</a></li>
+        <li><a href="/eng/recipes-en.html">Recipes</a></li>
+        <li><a href="/eng/festivals-en.html">Festivals</a></li>
+        <li><a href="/eng/support-en.html" class="btn-support">Support</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+ <main class="platillos" id="main-content">
+  <h1>Dishes by Region</h1>
+
+  <!-- Tacos al pastor -->
+  <section class="platillo-bloque">
+    <div class="platillo-img">
+      <img src="../img/Tacos al pastor.jpg" alt="Tacos al pastor served with lime and onion">
+    </div>
+    <div class="platillo-desc">
+      <h2>Tacos al Pastor</h2>
+      <p>
+        Originating from Mexico City, <strong>tacos al pastor</strong> combine meat marinated in achiote, pineapple and onion, 
+        slowly cooked on a vertical spit. This dish was born from the Arabic influence of shawarma, adapted with the unique touch of Mexican flavor.
+      </p>
+    </div>
+  </section>
+
+  <!-- Pozole -->
+  <section class="platillo-bloque reverse">
+    <div class="platillo-desc">
+      <h2>Pozole</h2>
+      <p>
+        <strong>Pozole</strong> is a festive soup made with cacahuazintle corn, pork or chicken, 
+        and accompanied with lettuce, radishes, oregano and lime. Each region has its version, 
+        but all share the spirit of celebration that accompanies this dish.
+      </p>
+    </div>
+    <div class="platillo-img">
+      <img src="../img/pozole.png" alt="Bowl of pozole with radishes, lettuce and oregano">
+    </div>
+  </section>
+
+  <!-- Tamales -->
+  <section class="platillo-bloque">
+    <div class="platillo-img">
+      <img src="../img/tamales mexicanos.jpg" alt="Corn tamales in leaves">
+    </div>
+    <div class="platillo-desc">
+      <h2>Tamales</h2>
+      <p>
+        <strong>Tamales</strong> are an ancestral legacy of pre-Hispanic cuisine. 
+        Prepared with corn dough and filled with stews, wrapped in corn or banana leaves, 
+        they are enjoyed throughout the country during celebrations and family festivities.
+      </p>
+    </div>
+  </section>
+
+  <!-- Enchiladas -->
+  <section class="platillo-bloque reverse">
+    <div class="platillo-desc">
+      <h2>Enchiladas</h2>
+      <p>
+        <strong>Enchiladas</strong> represent the perfect balance between spicy and traditional. 
+        They are prepared with tortillas dipped in red or green sauce, filled with chicken or cheese, 
+        and topped with cream, onion and fresh cheese. A classic that varies from state to state.
+      </p>
+    </div>
+    <div class="platillo-img">
+      <img src="../img/enchilada roja.jpg" alt="Red enchiladas on a plate">
+    </div>
+  </section>
+</main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <p>&copy; 2025 SaborMexicano - All rights reserved</p>
+  </footer>
+
+  <script src="../js/databases.js"></script>
+</body>
+</html>

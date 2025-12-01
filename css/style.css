@@ -122,8 +122,6 @@ nav ul li a:hover {
     color: #333;
 }
 
-
-
 /* Botón de Soporte */
 .extra a[href*="soporte"] {
     background: linear-gradient(135deg, #e63946 0%, #d62839 100%);
@@ -138,10 +136,10 @@ nav ul li a:hover {
     border: 2px solid transparent;
     position: relative;
     overflow: hidden;
-    display: inline-block; /* Asegurar que sea bloque en línea */
+    display: inline-block; 
 }
 
-/* Efecto de brillo al hover - CORREGIDO */
+/* sefecto de brillo */
 .extra a[href*="soporte"]::before {
     content: '';
     position: absolute;
@@ -164,18 +162,15 @@ nav ul li a:hover {
     left: 100%;
 }
 
-/* Asegurar que el texto esté por encima del efecto */
+
 .extra a[href*="soporte"] span {
     position: relative;
     z-index: 2;
 }
 
-/* ===== BOTÓN IDIOMA -O ===== */
+/* ===== BOTÓN IDIOMA ===== */
 
-/* Botón de Idioma - Estilo corregido */
-.extra a[href*="-en.html"],
-.extra a[href*="ingles"],
-.extra a[href*="english"] {
+[data-lang] {
     background: rgba(255, 255, 255, 0.1);
     color: white;
     text-decoration: none;
@@ -188,20 +183,17 @@ nav ul li a:hover {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     position: relative;
-    display: inline-block; /* Importante para el posicionamiento */
+    display: inline-block;
 }
 
-/* Indicador de idioma actual - CORREGIDO */
-.extra a[href*="-en.html"]::after,
-.extra a[href*="ingles"]::after,
-.extra a[href*="english"]::after {
-    content: 'ENG';
+[data-lang]::after {
+    content: attr(data-lang);
     position: absolute;
-    top: -6px; /* Ajustado para que no se salga */
-    right: -6px; /* Ajustado para que no se salga */
+    top: -6px;
+    right: -6px;
     background: #ffd60a;
     color: #333;
-    font-size: 9px; /* Un poco más pequeño */
+    font-size: 9px;
     font-weight: bold;
     padding: 2px 5px;
     border-radius: 8px;
@@ -211,22 +203,6 @@ nav ul li a:hover {
     text-align: center;
     z-index: 3;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-/* Versión alternativa más compacta */
-.extra a.idioma-ingles::after {
-    content: 'ENG';
-    position: absolute;
-    top: -4px;
-    right: -4px;
-    background: #ffd60a;
-    color: #333;
-    font-size: 8px;
-    font-weight: bold;
-    padding: 1px 4px;
-    border-radius: 6px;
-    animation: pulse 2s infinite;
-    line-height: 1.2;
 }
 
 @keyframes pulse {
@@ -241,8 +217,7 @@ nav ul li a:hover {
 }
 
 
-
-/* Botón Soporte Simple */
+/* Botón Soporte */
 .extra a.btn-soporte-simple {
     background: linear-gradient(135deg, #e63946 0%, #d62839 100%);
     color: white;
@@ -294,7 +269,7 @@ nav ul li a:hover {
     line-height: 1.2;
 }
 
-/* ===== RESPONSIVIDAD CORREGIDA ===== */
+/* ===== RESPONSIve===== */
 
 @media (max-width: 768px) {
     /* Ajustes para botón soporte en móviles */
@@ -303,7 +278,7 @@ nav ul li a:hover {
         font-size: 13px;
     }
     
-    /* Ajustes para botón idioma en móviles */
+    /*  botón idioma en móviles */
     .extra a[href*="-en.html"]::after,
     .extra a[href*="ingles"]::after,
     .extra a[href*="english"]::after {
@@ -486,7 +461,7 @@ input:focus {
     }
 }
 
-/* Mejoras responsive para las secciones */
+/* responsive para las secciones */
 @media (max-width: 768px) {
     .secciones {
         flex-direction: column;
@@ -906,7 +881,7 @@ footer {
 
 
 /* ===== FESTIVALES ===== */
-/* ====== ESTILO DE TÍTULO Y SUBTÍTULO DE FESTIVALES ====== */
+
 .festivales h1 {
   text-align: left;
   font-size: 2.6rem;
@@ -939,11 +914,6 @@ main.festivales p.intro {
   margin-bottom: 30px;
   letter-spacing: 0.3px;
 }
-
-
-
-
-
 
 
 .festivales {
@@ -1204,5 +1174,373 @@ main.festivales p.intro {
   }
   .feria-imagen img {
     max-width: 100%;
+  }
+}
+
+/* Clase para botón de Soporte/Support */
+.btn-support {
+    background: linear-gradient(135deg, #e63946 0%, #d62839 100%);
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(230, 57, 70, 0.25);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Efecto de brillo al hover para Support */
+.btn-support::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        transparent, 
+        rgba(255, 255, 255, 0.3), 
+        transparent
+    );
+    transition: left 0.6s ease;
+    z-index: 1;
+}
+
+.btn-support:hover::before,
+.btn-support:focus::before {
+    left: 100%;
+}
+
+.btn-support span {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-support:hover,
+.btn-support:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(230, 57, 70, 0.4);
+    background: linear-gradient(135deg, #d62839 0%, #c1121f 100%);
+    border-color: #ffd60a;
+}
+
+/* Clase para botón de Idioma */
+.btn-language {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    line-height: 1.2;
+}
+
+/* Badge de idioma */
+.btn-language::after {
+    content: attr(data-lang);
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #ffd60a;
+    color: #333;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 2px 5px;
+    border-radius: 8px;
+    animation: pulse 2s infinite;
+    line-height: 1;
+    min-width: 20px;
+    text-align: center;
+    z-index: 3;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-language:hover,
+.btn-language:focus {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-1px);
+}
+
+/* Animación del badge */
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1); 
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    50% { 
+        transform: scale(1.1); 
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* Responsive para botones */
+@media (max-width: 768px) {
+    .btn-support {
+        padding: 8px 16px;
+        font-size: 13px;
+    }
+    
+    .btn-language {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .btn-language::after {
+        top: -4px;
+        right: -4px;
+        font-size: 8px;
+        padding: 1px 3px;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .btn-support::before {
+        display: none; /
+    }
+}
+
+/* ===== estilo para mouseover deplegable ===== */
+.card {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  margin: 20px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+/* Tooltip */
+.descripcion-hover {
+  position: absolute;
+  bottom: -20px; /* antes -70px */
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: rgba(230, 57, 70, 0.95);
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  width: 200px;
+  line-height: 1.3;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 10;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Flechita decorativa */
+.descripcion-hover::after {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent rgba(230, 57, 70, 0.95) transparent;
+}
+
+.card.mostrando .descripcion-hover {
+  opacity: 1;
+  visibility: visible;
+  bottom: -45px; /* más cerca del ícono */
+}
+
+
+/* ====== SLIDER DE IMÁGENES ====== */
+.carrusel {
+  width: 100%;
+  max-width: 1000px;
+  margin: 60px auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+  z-index: 2;
+}
+
+.slide img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* Botones de navegación */
+.prev,
+.next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(230, 57, 70, 0.8);
+  border: none;
+  color: white;
+  font-size: 28px;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 3;
+  transition: background 0.3s;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(230, 57, 70, 1);
+}
+
+.prev {
+  left: 15px;
+}
+
+.next {
+  right: 15px;
+}
+
+/* Indicadores (puntos) */
+.indicators {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+}
+
+.indicators button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.6);
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.indicators button.active {
+  background: #e63946;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .slider-container {
+    height: 300px;
+  }
+
+  .slide img {
+    height: 300px;
+  }
+
+  .prev,
+  .next {
+    font-size: 22px;
+    padding: 8px 12px;
+  }
+}
+
+/* ====== MENSAJE DE BIENVENIDA ====== */
+.welcome-popup {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 300px;
+  background: rgba(255, 255, 255, 0.95);
+  border-left: 6px solid #e63946;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  z-index: 2000;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+.welcome-popup.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.popup-content {
+  padding: 15px 20px;
+  color: #333;
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.popup-content p {
+  margin: 0;
+  padding-right: 25px;
+}
+
+.close-popup {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #e63946;
+  font-size: 22px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.close-popup:hover {
+  color: #b91c1c;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .welcome-popup {
+    width: 90%;
+    right: 5%;
+    bottom: 15px;
+  }
+  .popup-content {
+    font-size: 14px;
   }
 }

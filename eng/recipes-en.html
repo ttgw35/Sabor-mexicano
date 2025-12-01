@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipes - SaborMexicano</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/stylehead.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header role="banner">
+    <div class="logo">
+      <a href="index-en.html" aria-label="SaborMexicano - Home page">
+        <img src="../img/Aguacate logo.png" alt="SaborMexicano Logo">
+      </a>
+    </div>
+
+    <nav role="navigation" aria-label="Main navigation">
+      <ul>
+        <li><a href="/eng/history-en.html">History</a></li>
+        <li><a href="/eng/dishes-en.html">Dishes</a></li>
+        <li><a href="/eng/recipes-en.html">Recipes</a></li>
+        <li><a href="/eng/festivals-en.html">Festivals</a></li>
+      </ul>
+    </nav>
+
+    <div class="extra">
+      <a href="/eng/support-en.html" class="btn-support">Support</a>
+
+      <!-- SEARCH BAR -->
+      <div class="search-wrapper">
+        <div class="search-container">
+          <label for="search-input" class="visually-hidden">Search the site</label>
+          <input type="text" id="search-input" placeholder="Search dishes, recipes..." 
+                 aria-describedby="search-help">
+          <div class="search-icon" id="search-button">🔍</div>
+          <span id="search-help" class="visually-hidden">Type to see search suggestions</span>
+          
+          <div class="search-suggestions" id="search-suggestions">
+            <!-- Suggestions generated dynamically -->
+          </div>
+        </div>
+      </div>
+
+      <span><a href="../recetas.html" class="btn-language" data-lang="ENG" aria-label="Spanish version">ESP</a></span>
+      
+      <!-- HAMBURGER MENU -->
+      <div class="hamburger-wrapper">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger-button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        
+        <label for="menu-toggle" class="menu-overlay"></label>
+        
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+          <label for="menu-toggle" class="close-menu" aria-label="Close menu">×</label>
+           <ul>
+        <li><a href="/eng/history-en.html">History</a></li>
+        <li><a href="/eng/dishes-en.html">Dishes</a></li>
+        <li><a href="/eng/recipes-en.html">Recipes</a></li>
+        <li><a href="/eng/festivals-en.html">Festivals</a></li>
+        <li><a href="/eng/support-en.html" class="btn-support">Support</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- RECIPES CONTENT -->
+<main class="recetas" id="main-content">
+  <h1>Recipes</h1>
+
+  <!-- 1. BIRRIA -->
+  <section class="receta-bloque" id="birria">
+    <div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/g2F5RO6vNSs?si=YeyCoB5idmrc2VBJ"
+        title="Beef Birria Recipe | La Capital"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="receta-desc">
+      <p>
+        <strong>Beef birria</strong> is a traditional Mexican stew originating from Jalisco. 
+        It is characterized by beef cooked slowly until tender and juicy, 
+        bathed in a marinade of dried chilies, spices and aromatic herbs that give it a deep flavor.
+      </p>
+    </div>
+  </section>
+
+  <!-- 2. BURRITOS -->
+  <section class="receta-bloque" id="burritos">
+    <div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/W6jcYHW4G2I?si=YPtQZitSBvRM-QMG"
+        title="Burritos Recipe"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="receta-desc">
+      <p>
+        <strong>Burritos</strong> are a preparation originating from northern Mexico, 
+        made with flour tortillas filled with meat, beans and cheese. 
+        They are practical, delicious and very popular both in Mexico and the United States.
+      </p>
+    </div>
+  </section>
+
+  <!-- 3. RANCH STEAK -->
+  <section class="receta-bloque" id="bistec-ranchero">
+    <div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/uZeeQKDUXhI?si=EtwZ8f3VxngxrFGw"
+        title="Ranch Steak Recipe"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="receta-desc">
+      <p>
+        <strong>Ranch steak</strong> is a typical dish of Mexican home cooking. 
+        It is prepared with beef steak stewed in tomato sauce with onion, garlic and chilies. 
+        It is ideal to accompany with rice and refried beans.
+      </p>
+    </div>
+  </section>
+</main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <p>&copy; 2025 SaborMexicano - All rights reserved</p>
+  </footer>
+
+  <script src="../js/databases.js"></script>
+</body>
+</html>

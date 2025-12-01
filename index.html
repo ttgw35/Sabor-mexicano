@@ -5,290 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SaborMexicano - Gastronomía Mexicana</title>
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    /* ESTILOS DEL MENÚ HAMBURGUESA */
-    .hamburger-wrapper {
-      position: relative;
-      display: inline-block;
-    }
-    
-    #menu-toggle {
-      display: none;
-    }
-    
-    .hamburger-button {
-      display: flex;
-      flex-direction: column;
-      width: 30px;
-      height: 30px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      gap: 4px;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    .hamburger-button span {
-      display: block;
-      width: 25px;
-      height: 3px;
-      background: white;
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-    
-    .mobile-nav {
-      position: fixed;
-      top: 0;
-      right: -300px;
-      width: 280px;
-      height: 100vh;
-      background: #e63946;
-      padding: 80px 20px 20px;
-      z-index: 1000;
-      transition: right 0.3s ease;
-      box-shadow: -2px 0 10px rgba(0,0,0,0.3);
-      overflow-y: auto;
-    }
-    
-    #menu-toggle:checked ~ .mobile-nav {
-      right: 0;
-    }
-    
-    .menu-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 999;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s ease;
-      cursor: pointer;
-    }
-    
-    #menu-toggle:checked ~ .menu-overlay {
-      opacity: 1;
-      visibility: visible;
-    }
-    
-    /* MENÚ EN COLUMNA */
-    .mobile-nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-    
-    .mobile-nav li {
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-    }
-    
-    .mobile-nav a {
-      display: block;
-      padding: 18px 15px;
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 16px;
-      transition: all 0.3s ease;
-      text-align: left;
-    }
-    
-    .mobile-nav a:hover {
-      background: rgba(255,255,255,0.15);
-      padding-left: 20px;
-    }
-    
-    .close-menu {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 24px;
-      cursor: pointer;
-      padding: 5px;
-      width: 35px;
-      height: 35px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      transition: background 0.3s ease;
-    }
-    
-    .close-menu:hover {
-      background: rgba(255,255,255,0.1);
-    }
-    
-    /* Animación del botón hamburguesa */
-    #menu-toggle:checked + .hamburger-button span:nth-child(1) {
-      transform: rotate(45deg) translate(6px, 6px);
-    }
-    
-    #menu-toggle:checked + .hamburger-button span:nth-child(2) {
-      opacity: 0;
-    }
-    
-    #menu-toggle:checked + .hamburger-button span:nth-child(3) {
-      transform: rotate(-45deg) translate(6px, -6px);
-    }
-
-    /* Iconos para los enlaces (opcional) */
-    .mobile-nav a::before {
-      content: "•";
-      margin-right: 10px;
-      color: #ffd60a;
-      font-size: 18px;
-    }
-
-    /* ===== BARRA DE BÚSQUEDA CON FILTRADO EN TIEMPO REAL ===== */
-    .search-wrapper {
-      position: relative;
-      flex: 1;
-      max-width: 300px;
-    }
-
-    .search-container {
-      position: relative;
-      width: 100%;
-    }
-
-    #search-input {
-      width: 100%;
-      padding: 10px 40px 10px 15px;
-      border: 2px solid transparent;
-      border-radius: 25px;
-      background: rgba(255, 255, 255, 0.9);
-      font-size: 14px;
-      transition: all 0.3s ease;
-    }
-
-    #search-input:focus {
-      outline: none;
-      border-color: #ffd60a;
-      background: white;
-      box-shadow: 0 0 10px rgba(255, 214, 10, 0.3);
-    }
-
-    .search-icon {
-      position: absolute;
-      right: 15px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #666;
-      cursor: pointer;
-      padding: 5px;
-      transition: color 0.3s ease;
-    }
-
-    .search-icon:hover {
-      color: #e63946;
-    }
-
-    /* SUGERENCIAS DE BÚSQUEDA */
-    .search-suggestions {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      margin-top: 5px;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: all 0.3s ease;
-      z-index: 1000;
-      max-height: 400px;
-      overflow-y: auto;
-    }
-
-    .search-suggestions.active {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .suggestion-item {
-      display: block;
-      padding: 12px 15px;
-      color: #333;
-      text-decoration: none;
-      border-bottom: 1px solid #f0f0f0;
-      transition: all 0.2s ease;
-      text-align: left;
-      cursor: pointer;
-    }
-
-    .suggestion-item:hover,
-    .suggestion-item:focus {
-      background: #f8f9fa;
-      color: #e63946;
-    }
-
-    .suggestion-category {
-      font-size: 12px;
-      color: #666;
-      margin-top: 3px;
-    }
-
-    .suggestion-highlight {
-      background-color: #ffd60a;
-      padding: 2px 4px;
-      border-radius: 3px;
-      font-weight: bold;
-    }
-
-    .no-results {
-      padding: 15px;
-      text-align: center;
-      color: #666;
-      font-style: italic;
-    }
-
-    /* Grupos de sugerencias */
-    .suggestion-group {
-      border-bottom: 1px solid #e0e0e0;
-    }
-
-    .suggestion-group:last-child {
-      border-bottom: none;
-    }
-
-    .suggestion-header {
-      padding: 10px 15px;
-      background: #f8f9fa;
-      color: #666;
-      font-size: 12px;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-
-    /* Responsive para búsqueda */
-    @media (max-width: 768px) {
-      .search-wrapper {
-        max-width: none;
-        margin: 10px 0;
-      }
-      
-      .search-suggestions {
-        position: fixed;
-        left: 20px;
-        right: 20px;
-        top: 120px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="css/stylehead.css">
+  
 </head>
 <body>
   <!-- ENCABEZADO -->
@@ -311,7 +29,7 @@
     </nav>
 
     <div class="extra">
-      <a href="soporte.html">Soporte</a>
+      <a href="soporte.html" class="btn-support">Soporte</a>
 
       <!-- BARRA DE BÚSQUEDA -->
       <div class="search-wrapper">
@@ -329,7 +47,7 @@
         </div>
       </div>
 
-      <span><a href="index-en.html" aria-label="English version">ENG</a></span>
+      <span><a href="eng/index-en.html" class="btn-language" data-lang="ENG" aria-label="English version">ENG</a></span>
       
       <!-- MENÚ HAMBURGUESA -->
       <div class="hamburger-wrapper">
@@ -351,7 +69,7 @@
             <li><a href="platillos.html">Platillos</a></li>
             <li><a href="recetas.html">Recetas</a></li>
             <li><a href="festivales.html">Festivales</a></li>
-            <li><a href="soporte.html">Soporte</a></li>
+            <li><a href="soporte.html" class="btn-support">Soporte</a></li>
           </ul>
         </nav>
       </div>
@@ -370,243 +88,81 @@
       </div>
     </section>
 
-    <!-- ICONOS DE SECCIONES -->
-    <section class="secciones" aria-labelledby="secciones-heading">
-      <h2 id="secciones-heading" class="visually-hidden">Secciones principales</h2>
-      <a href="historia.html" class="card" role="button" aria-label="Explorar la historia de la gastronomía mexicana">
-        <img src="img/Aztecas.jpg" alt="Representación de la cultura azteca y sus tradiciones culinarias">
-        <p>HISTORIA</p>
+
+<!-- SECCIÓN DE ICONOS DE SECCIONES -->
+<section class="secciones" aria-labelledby="secciones-heading">
+  <h2 id="secciones-heading" class="visually-hidden">Secciones principales</h2>
+
+  <a href="historia.html" class="card" data-descripcion="Explora los orígenes de la cocina mexicana.">
+    <img src="img/Aztecas.jpg" alt="Representación de la cultura azteca y sus tradiciones culinarias">
+    <p>HISTORIA</p>
+  </a>
+
+  <a href="platillos.html" class="card" data-descripcion="Descubre los sabores más representativos de México.">
+    <img src="img/Platillos.jpg" alt="platillos mexicanos tradicionales">
+    <p>PLATILLOS</p>
+  </a>
+
+  <a href="recetas.html" class="card" data-descripcion="Aprende a preparar recetas mexicanas auténticas.">
+    <img src="img/recetas.jpeg" alt="Ingredientes para preparar recetas mexicanas">
+    <p>RECETAS</p>
+  </a>
+
+  <a href="festivales.html" class="card" data-descripcion="Vive las celebraciones gastronómicas de México.">
+    <img src="img/Festivales.jpeg" alt="Festival gastronómico mexicano">
+    <p>FESTIVALES</p>
+  </a>
+</section>
+</main>
+
+<!-- CONTENEDOR DEL MENSAJE DE BIENVENIDA -->
+<div id="welcome-popup" class="welcome-popup" role="dialog" aria-live="polite" aria-label="Mensaje de bienvenida">
+  <div class="popup-content">
+    <button id="close-popup" class="close-popup" aria-label="Cerrar mensaje">×</button>
+    <p id="welcome-message"></p>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="js/interactividad.js"></script>
+<script src="js/slider.js"></script>
+<script src="js/bienvenida.js"></script>
+<script src="js/basededatos.js"></script>
+
+
+<!-- CARRUSEL DE IMÁGENES -->
+<section class="carrusel" aria-label="Galería destacada de gastronomía mexicana">
+  <div class="slider-container">
+    <div class="slide active">
+      <a href="historia.html">
+        <img src="img/slider historia.png" alt="Representación de la historia gastronómica mexicana">
       </a>
-      <a href="platillos.html" class="card" role="button" aria-label="Descubrir platillos típicos mexicanos">
-        <img src="img/Platillos.jpg" alt="Selección de platillos mexicanos tradicionales">
-        <p>PLATILLOS</p>
+    </div>
+    <div class="slide">
+      <a href="festivales.html">
+        <img src="https://res.cloudinary.com/ditgyvcpf/image/upload/v1764556743/slider_festivales_umddjx.png" alt="Festival gastronómico mexicano con música y comida">
       </a>
-      <a href="recetas.html" class="card" role="button" aria-label="Ver recetas de cocina mexicanas">
-        <img src="img/recetas.jpeg" alt="Ingredientes y utensilios para preparar recetas mexicanas">
-        <p>RECETAS</p>
+    </div>
+    <div class="slide">
+      <a href="recetas.html">
+        <img src="img/slider recetas.png" alt="Recetas mexicanas tradicionales en preparación">
       </a>
-      <a href="festivales.html" class="card" role="button" aria-label="Conocer festivales gastronómicos mexicanos">
-        <img src="img/Festivales.jpeg" alt="Festival gastronómico mexicano con comida y celebración">
-        <p>FESTIVALES</p>
-      </a>
-    </section>
-  </main>
+    </div>
+
+    <!-- Botones de navegación manual -->
+    <button class="prev" aria-label="Imagen anterior">❮</button>
+    <button class="next" aria-label="Imagen siguiente">❯</button>
+
+    <!-- Indicadores (puntos) -->
+    <div class="indicators"></div>
+  </div>
+</section>
+
 
   <!-- PIE DE PÁGINA -->
   <footer role="contentinfo">
     <p>&copy; 2025 SaborMexicano - Todos los derechos reservados</p>
   </footer>
 
-  <script>
-    // BASE DE DATOS DE BÚSQUEDA
-    const searchData = [
-      // PLATILLOS
-      { name: "Tacos al pastor", category: "Platillos", url: "platillos.html#tacos-al-pastor", keywords: ["tacos", "pastor", "taco", "carne"] },
-      { name: "Pozole", category: "Platillos", url: "platillos.html#pozole", keywords: ["pozole", "sopa", "maíz"] },
-      { name: "Tamales", category: "Platillos", url: "platillos.html#tamales", keywords: ["tamales", "masa", "hoja"] },
-      { name: "Enchiladas", category: "Platillos", url: "platillos.html#enchiladas", keywords: ["enchiladas", "tortilla", "salsa"] },
-      
-      // RECETAS
-      { name: "Birria", category: "Recetas", url: "recetas.html#birria", keywords: ["birria", "res", "guiso", "jalisco"] },
-      { name: "Burritos", category: "Recetas", url: "recetas.html#burritos", keywords: ["burritos", "burrito", "tortilla", "harina"] },
-      { name: "Bistec Ranchero", category: "Recetas", url: "recetas.html#bistec-ranchero", keywords: ["bistec", "ranchero", "carne", "jitomate"] },
-      
-      // FESTIVALES
-      { name: "Feria del Mole", category: "Festivales", url: "feria-del-mole.html", keywords: ["feria", "mole", "puebla", "salsa"] },
-      { name: "Feria del Taco", category: "Festivales", url: "feria-del-taco.html", keywords: ["feria", "taco", "cdmx", "tacos"] },
-      { name: "Feria del Maíz", category: "Festivales", url: "feria-del-maiz.html", keywords: ["feria", "maíz", "estado de méxico", "elote"] },
-      
-      // PÁGINAS PRINCIPALES
-      { name: "Historia de la gastronomía mexicana", category: "Páginas", url: "historia.html", keywords: ["historia", "origen", "tradición"] },
-      { name: "Platillos típicos mexicanos", category: "Páginas", url: "platillos.html", keywords: ["platillos", "comida", "típico"] },
-      { name: "Recetas mexicanas", category: "Páginas", url: "recetas.html", keywords: ["recetas", "cocina", "preparar"] },
-      { name: "Festivales gastronómicos", category: "Páginas", url: "festivales.html", keywords: ["festivales", "eventos", "celebraciones"] }
-    ];
-
-    // ELEMENTOS DEL DOM
-    const searchInput = document.getElementById('search-input');
-    const searchSuggestions = document.getElementById('search-suggestions');
-    const searchButton = document.getElementById('search-button');
-
-    // FUNCIÓN PARA REALIZAR BÚSQUEDA
-    function performSearch() {
-      const searchTerm = searchInput.value.trim();
-      
-      if (!searchTerm) {
-        // Si no hay término de búsqueda, mostrar todas las sugerencias
-        showAllSuggestions();
-        searchSuggestions.classList.add('active');
-        return;
-      }
-
-      // Buscar el primer resultado que coincida
-      const results = searchData.filter(item => {
-        const nameMatch = item.name.toLowerCase().includes(searchTerm.toLowerCase());
-        const keywordMatch = item.keywords.some(keyword => 
-          keyword.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-        return nameMatch || keywordMatch;
-      });
-
-      if (results.length > 0) {
-        // Ir al primer resultado
-        window.location.href = results[0].url;
-      } else {
-        // Si no hay resultados, mostrar sugerencias filtradas
-        filterSuggestions(searchTerm);
-        searchSuggestions.classList.add('active');
-      }
-    }
-
-    // FUNCIÓN PARA FILTRAR SUGERENCIAS
-    function filterSuggestions(searchTerm) {
-      if (!searchTerm.trim()) {
-        return showAllSuggestions();
-      }
-
-      const filtered = searchData.filter(item => {
-        const nameMatch = item.name.toLowerCase().includes(searchTerm.toLowerCase());
-        const keywordMatch = item.keywords.some(keyword => 
-          keyword.toLowerCase().includes(searchTerm.toLowerCase())
-        );
-        return nameMatch || keywordMatch;
-      });
-
-      displaySuggestions(filtered, searchTerm);
-    }
-
-    // MOSTRAR TODAS LAS SUGERENCIAS
-    function showAllSuggestions() {
-      const categorized = {};
-      
-      searchData.forEach(item => {
-        if (!categorized[item.category]) {
-          categorized[item.category] = [];
-        }
-        categorized[item.category].push(item);
-      });
-
-      let html = '';
-      
-      // Mostrar solo algunas categorías por defecto
-      const defaultCategories = ['Platillos', 'Recetas', 'Festivales'];
-      
-      defaultCategories.forEach(category => {
-        if (categorized[category]) {
-          html += `
-            <div class="suggestion-group">
-              <div class="suggestion-header">${category}</div>
-              ${categorized[category].slice(0, 3).map(item => `
-                <a href="${item.url}" class="suggestion-item">
-                  ${item.name}
-                  <div class="suggestion-category">En ${item.category}</div>
-                </a>
-              `).join('')}
-            </div>
-          `;
-        }
-      });
-
-      searchSuggestions.innerHTML = html;
-    }
-
-    // MOSTRAR SUGERENCIAS FILTRADAS
-    function displaySuggestions(results, searchTerm) {
-      if (results.length === 0) {
-        searchSuggestions.innerHTML = `
-          <div class="no-results">
-            No se encontraron resultados para "${searchTerm}"
-            <br><small>Prueba con otras palabras como "tacos", "birria" o "mole"</small>
-          </div>
-        `;
-        return;
-      }
-
-      const categorized = {};
-      
-      results.forEach(item => {
-        if (!categorized[item.category]) {
-          categorized[item.category] = [];
-        }
-        categorized[item.category].push(item);
-      });
-
-      let html = '';
-
-      Object.keys(categorized).forEach(category => {
-        html += `
-          <div class="suggestion-group">
-            <div class="suggestion-header">${category}</div>
-            ${categorized[category].map(item => {
-              const highlightedName = highlightText(item.name, searchTerm);
-              return `
-                <a href="${item.url}" class="suggestion-item">
-                  ${highlightedName}
-                  <div class="suggestion-category">En ${item.category}</div>
-                </a>
-              `;
-            }).join('')}
-          </div>
-        `;
-      });
-
-      searchSuggestions.innerHTML = html;
-    }
-
-    // RESALTAR TEXTO COINCIDENTE
-    function highlightText(text, searchTerm) {
-      if (!searchTerm.trim()) return text;
-      
-      const regex = new RegExp(`(${searchTerm})`, 'gi');
-      return text.replace(regex, '<span class="suggestion-highlight">$1</span>');
-    }
-
-    // EVENTOS
-    searchInput.addEventListener('input', function() {
-      const searchTerm = this.value;
-      filterSuggestions(searchTerm);
-      searchSuggestions.classList.add('active');
-    });
-
-    searchInput.addEventListener('focus', function() {
-      if (!this.value.trim()) {
-        showAllSuggestions();
-      }
-      searchSuggestions.classList.add('active');
-    });
-
-    // Buscar al presionar Enter
-    searchInput.addEventListener('keypress', function(event) {
-      if (event.key === 'Enter') {
-        event.preventDefault(); 
-        performSearch();
-      }
-    });
-
-    // Buscar al hacer clic en la lupa
-    searchButton.addEventListener('click', function() {
-      performSearch();
-    });
-
-    // Cerrar sugerencias al hacer clic fuera
-    document.addEventListener('click', function(event) {
-      if (!event.target.closest('.search-container')) {
-        searchSuggestions.classList.remove('active');
-      }
-    });
-
-    // Cerrar menú móvil automáticamente
-    const menuToggle = document.getElementById('menu-toggle');
-    const menuLinks = document.querySelectorAll('.mobile-nav a');
-    
-    menuLinks.forEach(link => {
-      link.addEventListener('click', function() {
-        menuToggle.checked = false;
-      });
-    });
-
-    // Mostrar sugerencias iniciales
-    showAllSuggestions();
-  </script>
 </body>
 </html>

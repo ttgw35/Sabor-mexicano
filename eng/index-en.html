@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SaborMexicano - Mexican Gastronomy</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/stylehead.css">
+  
+</head>
+<body>
+  <!-- HEADER -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header role="banner">
+    <div class="logo">
+      <a href="index-en.html" aria-label="SaborMexicano - Home page">
+        <img src="../img/Aguacate logo.png" alt="SaborMexicano Logo">
+      </a>
+    </div>
+
+    <nav role="navigation" aria-label="Main navigation">
+      <ul>
+        <li><a href="/eng/history-en.html">History</a></li>
+        <li><a href="/eng/dishes-en.html">Dishes</a></li>
+        <li><a href="/eng/recipes-en.html">Recipes</a></li>
+        <li><a href="/eng/festivals-en.html">Festivals</a></li>
+      </ul>
+    </nav>
+
+    <div class="extra">
+      <a href="support-en.html" class="btn-support">Support</a>
+
+      <!-- SEARCH BAR -->
+      <div class="search-wrapper">
+        <div class="search-container">
+          <label for="search-input" class="visually-hidden">Search the site</label>
+          <input type="text" id="search-input" placeholder="Search dishes, recipes..." 
+                 aria-describedby="search-help">
+          <div class="search-icon" id="search-button">🔍</div>
+          <span id="search-help" class="visually-hidden">Type to see search suggestions</span>
+          
+          <!-- SEARCH SUGGESTIONS -->
+          <div class="search-suggestions" id="search-suggestions">
+  
+          </div>
+        </div>
+      </div>
+
+      <span><a href="../index.html" class="btn-language" data-lang="ENG" aria-label="Spanish version">ESP</a></span>
+      
+      <!-- HAMBURGER MENU -->
+      <div class="hamburger-wrapper">
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="hamburger-button">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        
+        <!-- Overlay to close -->
+        <label for="menu-toggle" class="menu-overlay"></label>
+        
+        <!-- Mobile menu -->
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+          <label for="menu-toggle" class="close-menu" aria-label="Close menu">×</label>
+       <ul>
+        <li><a href="/eng/history-en.html">History</a></li>
+        <li><a href="/eng/dishes-en.html">Dishes</a></li>
+        <li><a href="/eng/recipes-en.html">Recipes</a></li>
+        <li><a href="/eng/festivals-en.html">Festivals</a></li>
+      </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN SECTION -->
+  <main id="main-content" role="main">
+    <section class="intro" aria-labelledby="intro-heading">
+      <div class="intro-texto">
+        <h1 id="intro-heading">Mexican Gastronomy: History and Dishes</h1>
+        <img src="../img/Sombrero mexicano.png" alt="Traditional decorated Mexican sombrero">
+      </div>
+      <div class="intro-imagen">
+        <img src="../img/Imagen de la comida.jpg" alt="Variety of traditional Mexican dishes including tacos, guacamole and sauces">
+      </div>
+    </section>
+
+    <!-- SECTION ICONS -->
+   <section class="secciones" aria-labelledby="secciones-heading">
+  <h2 id="secciones-heading" class="visually-hidden">Main sections</h2>
+
+  <a href="history-en.html" class="card" role="button" 
+     data-descripcion="Explore the origins of Mexican cuisine.">
+    <img src="../img/Aztecas.jpg" alt="Representation of Aztec culture and its culinary traditions">
+    <p>HISTORY</p>
+  </a>
+
+  <a href="dishes-en.html" class="card" role="button" 
+     data-descripcion="Discover the most representative flavors of Mexico.">
+    <img src="../img/Platillos.jpg" alt="Selection of traditional Mexican dishes">
+    <p>DISHES</p>
+  </a>
+
+  <a href="recipes-en.html" class="card" role="button" 
+     data-descripcion="Learn how to prepare authentic Mexican recipes.">
+    <img src="../img/recetas.jpeg" alt="Ingredients and utensils for preparing Mexican recipes">
+    <p>RECIPES</p>
+  </a>
+
+  <a href="festivals-en.html" class="card" role="button" 
+     data-descripcion="Experience Mexico's gastronomic celebrations.">
+    <img src="../img/Festivales.jpeg" alt="Mexican food festival with food and celebration">
+    <p>FESTIVALS</p>
+  </a>
+</section>
+  </main>
+
+
+  <!-- message container  -->
+<div id="welcome-popup" class="welcome-popup" role="dialog" aria-live="polite" aria-label="Mensaje de bienvenida">
+  <div class="popup-content">
+    <button id="close-popup" class="close-popup" aria-label="Cerrar mensaje">×</button>
+    <p id="welcome-message"></p>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="../js/interactividad.js"></script>
+<script src="../js/slider.js"></script>
+<script src="../js/bienvenida-en.js"></script>
+<script src="../js/databases.js"></script>
+
+
+  <!-- CARRUSEL DE IMÁGENES -->
+<section class="carrusel" aria-label="Galería destacada de gastronomía mexicana">
+  <div class="slider-container">
+    <div class="slide active">
+      <a href="../eng/history-en.html">
+        <img src="../img/slider history.png" alt="Representación de la historia gastronómica mexicana">
+      </a>
+    </div>
+    <div class="slide">
+      <a href="../eng/festivals-en.html">
+        <img src="https://res.cloudinary.com/ditgyvcpf/image/upload/v1764556789/slider_festivals_tbfl7o.png" alt="Festival gastronómico mexicano con música y comida">
+      </a>
+    </div>
+    <div class="slide">
+      <a href="../eng/recipes-en.html">
+        <img src="../img/slider recepis.png" alt="Recetas mexicanas tradicionales en preparación">
+      </a>
+    </div>
+
+    <!-- Botones de navegación manual -->
+    <button class="prev" aria-label="Imagen anterior">❮</button>
+    <button class="next" aria-label="Imagen siguiente">❯</button>
+
+    <!-- Indicadores (puntos) -->
+    <div class="indicators"></div>
+  </div>
+</section>
+
+
+  <!-- FOOTER -->
+  <footer role="contentinfo">
+    <p>&copy; 2025 SaborMexicano - All rights reserved</p>
+  </footer>
+
+</body>
+</html>
